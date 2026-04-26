@@ -24,10 +24,32 @@
     <script>
       // gsap
       // animación: tween
-      gsap.to(".box", {
-        x: 20,
-        y: 100,
+      // FROM: Establece un estado inicial y anima hacia un estado final (estado base)
+      //   gsap.from(".box", {
+      //     x: 200,
+      //   });
+
+      // FROMTO: Anima de un estado inicial - Hacia un estado final
+      //   gsap.fromTo(
+      //     ".box",
+      //     {
+      //       x: 100,
+      //     },
+      //     {
+      //       x: 300,
+      //     }
+      //   );
+
+      // SET: establece las propiedades directamente
+      gsap.set(".box", {
+        x: 400,
       });
+
+      // Similar con To
+      //   gsap.to(".box", {
+      //     x: 400,
+      //     duration: 0
+      //   })
     </script>
   </body>
 </html>
