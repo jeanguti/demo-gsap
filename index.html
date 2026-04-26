@@ -48,18 +48,16 @@
         }
       })
 
-      tl
-      .to(".box.purple", {
+      tl.to(".box.purple", {
         x: 200
       })
       .to(".box.blue", {
-        duration: .2,
         y: -80
-      })
+      }, "<")
       .to(".box.yellow", {
         y: -158,
         x: 100
-      })
+      }, .2)
 
       // gsap.to(".grid .box", {
       //   duration: 2,
