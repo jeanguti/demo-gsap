@@ -33,82 +33,92 @@
       }
 
       #log {
-        color: #fff
+        color: #fff;
+      }
+
+      h1 {
+        color: white;
+        text-wrap: balance;
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <div class="box purple"></div>
-    <div class="box blue"></div>
-    <div class="box yellow"></div>
-
-
-    <footer>
-      <button id="play">Reproducir</button>
-      <button id="pause">Pausar</button>
-      <button id="resume">Resumir</button>
-      <button id="reverse">Revertir</button>
-      <button id="restart">Reiniciar</button>
-      <button id="turbo">Turbo</button>
-    </footer>
-
-    <small id="log"></small>
+    <h1 class="title">
+      El código es poesía, pero también puede ser magia visual con GSAP
+    </h1>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
     <script>
       // animación -> tween
 
+      gsap.registerPlugin(SplitText)
+
+      const splitText = new SplitText(".title", {
+        type: "lines, words, chars",
+        
+      })
+
+      gsap.from(splitText.words, {
+        duration: 1,
+        y: 25,
+        stagger: 0.2,
+        autoAlpha: 0,
+      })
+
+
       // suavizados -> easing
-      const tl = gsap.timeline({
-        default: {
-          duration: 2
-        },
-        onComplete: () => {
-          window.log.innerHTML += "[Event] Terminado... <br>"
-        },
-        onStart: () => {
-          window.log.innerHTML += "[Event] Iniciando... <br>"
-        },
-        onRepeat: () => {
-          window.log.innerHTML += "[Event] Repetido... <br>"
-        }
-      })
+      // const tl = gsap.timeline({
+      //   default: {
+      //     duration: 2
+      //   },
+      //   onComplete: () => {
+      //     window.log.innerHTML += "[Event] Terminado... <br>"
+      //   },
+      //   onStart: () => {
+      //     window.log.innerHTML += "[Event] Iniciando... <br>"
+      //   },
+      //   onRepeat: () => {
+      //     window.log.innerHTML += "[Event] Repetido... <br>"
+      //   }
+      // })
 
-      tl.to(".box.purple", {
-        x: 200
-      })
-      .to(".box.blue", {
-        y: -80
-      }, "<")
-      .to(".box.yellow", {
-        y: -158,
-        x: 100
-      }, .2)
+      // tl.to(".box.purple", {
+      //   x: 200
+      // })
+      // .to(".box.blue", {
+      //   y: -80
+      // }, "<")
+      // .to(".box.yellow", {
+      //   y: -158,
+      //   x: 100
+      // }, .2)
 
-      window.play.onclick = () => {
-        tl.play()
-        window.log.innerHTML += "Reproduciendo... <br>" 
-      }
-      window.pause.onclick = () => {
-        tl.pause()
-        window.log.innerHTML += "Pausando... <br>"
-      }
-      window.resume.onclick = () => {
-        tl.resume()
-        window.log.innerHTML += "Reanudando... <br>"
-      }
-      window.reverse.onclick = () => {
-        tl.reverse()
-        window.log.innerHTML += "Revertiendo... <br>"
-      }
-      window.restart.onclick = () => {
-        tl.restart()
-        window.log.innerHTML += "Reiniciando... <br>"
-      }
-      window.turbo.onclick = () => {
-        tl.timeScale(5)
-        window.log.innerHTML += "Turbo... <br>"
-      }
+      // window.play.onclick = () => {
+      //   tl.play()
+      //   window.log.innerHTML += "Reproduciendo... <br>"
+      // }
+      // window.pause.onclick = () => {
+      //   tl.pause()
+      //   window.log.innerHTML += "Pausando... <br>"
+      // }
+      // window.resume.onclick = () => {
+      //   tl.resume()
+      //   window.log.innerHTML += "Reanudando... <br>"
+      // }
+      // window.reverse.onclick = () => {
+      //   tl.reverse()
+      //   window.log.innerHTML += "Revertiendo... <br>"
+      // }
+      // window.restart.onclick = () => {
+      //   tl.restart()
+      //   window.log.innerHTML += "Reiniciando... <br>"
+      // }
+      // window.turbo.onclick = () => {
+      //   tl.timeScale(5)
+      //   window.log.innerHTML += "Turbo... <br>"
+      // }
 
       // gsap.to(".grid .box", {
       //   duration: 2,
